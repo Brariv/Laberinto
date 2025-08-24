@@ -14,9 +14,9 @@ impl TextureManager {
 
         // Map characters to texture file paths
         let texture_files = vec![
-            ('+', "assets/arcade_carpet_1.png"),
-            ('-', "assets/arcade_carpet_2.png"),
-            ('|', "assets/arcade_carpet_3.png"),
+            ('+', "assets/wall.png"),
+            ('-', "assets/walls.png"),
+            ('|', "assets/walls.png"),
         ];
 
         for (ch, path) in texture_files {

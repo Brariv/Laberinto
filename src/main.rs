@@ -126,22 +126,15 @@ fn render_world(
     let stake_bottom = (hh + (stake_height / 2.0)) as usize;
     
     let ch = intersect.impact;
-    let texture = texture_manager.get_texture(ch).unwrap();
+    
+    //let texture = texture_manager.get_texture(ch).unwrap();
 
+    
     let texture_ref = texture_manager.get_texture(ch).unwrap();
     let tw_u = texture_ref.width();
     let th_u = texture_ref.height();
 
-
-    // Calculate correct texture X coordinate based on wall orientation
-    let wall_x = if (intersect.impact_x.fract() == 0.0) {
-        // Vertical wall: use impact_y coordinate
-        (intersect.impact_y % block_size as f32) / block_size as f32
-    } else {
-        // Horizontal wall: use impact_x coordinate
-        (intersect.impact_x % block_size as f32) / block_size as f32
-    };
-    let tex_x = (wall_x * tw_u as f32).clamp(0.0, (tw_u - 1) as f32) as u32;
+    let tex_x = ((intersect.impact_x as f32) * tw_u as f32).clamp(0.0, (tw_u - 1) as f32) as u32;
 
     let ys = stake_top.max(0);
     let ye = stake_bottom.min(framebuffer.image_height as usize - 1);
@@ -151,16 +144,11 @@ fn render_world(
         let v = (y as f32 - ys as f32) / ((ye as f32 - ys as f32).max(1.0) as f32);
         let tex_y = (v * th_u as f32).clamp(0.0, th_u as f32) as u32;
 
-        
         let color = texture_manager.get_pixel_color(
             intersect.impact,
             tex_x,
             tex_y,
         );
-
-        
-        
-
 
         framebuffer.set_pixel(i, y as i32, color);
     }
