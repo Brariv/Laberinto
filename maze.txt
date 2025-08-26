@@ -1,9 +1,31 @@
-+--+--+--+--+
-|           |
-+  +--+  +  +
-|  |     |  |
-+  +  +--+--+
-|  |        |
-+  +--+--+  +
-|        | g|
-+--+--+--+--+
++--+--+--+--+--+-++-+--+--+--+--+--+
+|  cccccccccccccc||cccccccccccccccc|
++ c+--+ c+----+ c|| c+----+ c+--+ c|
+| c|  | c|    | c|| c|    | c|  | c|
++ c+--+ c+----+ c++ c+----+ c+--+ c|
+| ccccccccccccccccccccccccccccccccc|
++ c+--+ c++ c+--+--+--+ c++ c+--+ c|
+| c+--+ c|| c+---++---+ c|| c+--+ c|
+| ccccccc|| ccccc|| ccccc|| ccccccc|
++-----+ c|+--+ c || c +--+| c+-----+
+|     | c|+--+ c ++ c +--+| c|     |
+|     | c|| ccccccccccccc|| c|     |
+|     | c|| c+--------+ c|| c|     |
++-----+ c++ c|        | c++ c+-----+
+|cccccc ccc c|        | ccc ccccccc|
++-----+ c++ c+--------+ c++ c+-----+
+|     | c|| ccccccccccccc|| c|     |
+|     | c|| c+--+--+--+ c|| c|     |
++-----+ c++ c+---++---+ c++ c+-----+
+| ccccccccccccccc|| ccccccccccccc c|
+| c+--+ c+----+ c|| c+----+ c+--+ c|
+| c+-++ c+----+ c++ c+----+ c++-+ c|
+| ccc|| ccccccccccccccccccccc|| ccc|
+| ccc|| c++ c+--+--+--+ c++ c|| ccc|
++-+ c|| c|| c|        | c|| c|| c+-+
++-+ c++ c|| c+---++---+ c|| c++ c+-+
+| ccccccc|| ccccc|| ccccc|| ccccccc|
+| c+--+--++--+ c || c +--++--+--+ c|
+| c+--+--+---+ c ++ c +--+--+---+ c|
+| ccccccccccccccccccccccccccccccccc|
++--+--+--+--+--+-++-+--+--+--+--+--+

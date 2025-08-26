@@ -1,0 +1,17 @@
++--+--+--+--+--+--+--+--+--+--+--+--+
+|  ccc| ccccccccccccc| cccc| ccccccc|
++ c+ c+ c+ c+--+--+ c+ c+ c+ c+--+ c+
+| c| cccc| cccc| ccccccc| cccc| c| c|
++ c+--+--+--+ c+--+--+--+--+--+ c+ c+
+| cccccccccc| ccccccccccccc| cccc| c|
++--+--+ c+--+--+--+--+ c+ c+ c+ c+ c+
+| cccc| c| cccccccccc| c| c| c| c| c|
++ c+ c+ c+ c+--+--+ c+ c+ c+ c+--+ c+
+| c| c| c| cccc| c| c| c| c| cccc| c|
++ c+ c+ c+--+ c+ c+--+ c+ c+--+ c+ c+
+| c| c| c| c| c| ccccccc| cccc| cccc|
++ c+--+ c+ c+ c+ c+--+--+ c+ c+ c+--+
+| c| cccc| c| c| c| cccc| c| c| cccc|
++ c+ c+--+ c+ c+--+ c+ c+--+ c+--+ c+
+| cccccccccc| ccccccc| ccccccc| cccc|
++--+--+--+--+--+--+--+--+--+--+--+--+

@@ -77,6 +77,7 @@ impl FrameBuffer {
         window: &mut RaylibHandle,
         raylib_thread: &RaylibThread
     ) {
+        let fps = window.get_fps();
         if let Ok(texture) = window.load_texture_from_image(raylib_thread, &self.color_buffer) {
             let mut d = window.begin_drawing(raylib_thread);
             let screen_width = d.get_screen_width() as f32;
@@ -95,6 +96,8 @@ impl FrameBuffer {
             let dest_x = (screen_width - dest_width) / 2.0;
             let dest_y = (screen_height - dest_height) / 2.0;
 
+            
+
             d.draw_texture_ex(
                 &texture,
                 Vector2::new(dest_x, dest_y),
@@ -102,9 +105,54 @@ impl FrameBuffer {
                 scale,
                 Color::WHITE,
             );
+
+            d.draw_text(&format!("FPS: {}", fps), 1200, 10, 20, Color::WHITE);
         }
     }
 
-    
+    pub fn swap_buffers_image(
+        &mut self,
+        window: &mut RaylibHandle,
+        raylib_thread: &RaylibThread,
+        scarfy: &Texture2D
+    ) {
+        let fps = window.get_fps();
+        if let Ok(texture) = window.load_texture_from_image(raylib_thread, &self.color_buffer) {
+            let mut d = window.begin_drawing(raylib_thread);
+            let screen_width = d.get_screen_width() as f32;
+            let screen_height = d.get_screen_height() as f32;
+
+            let texture_width = (self.image_width * self.pixel_size) as f32;
+            let texture_height = (self.image_height * self.pixel_size) as f32;
+
+            let scale_x = screen_width / texture_width;
+            let scale_y = screen_height / texture_height;
+            let scale = scale_x.min(scale_y); // mantener aspecto cuadrado
+
+            let dest_width = texture_width * scale;
+            let dest_height = texture_height * scale;
+
+            let dest_x = (screen_width - dest_width) / 2.0;
+            let dest_y = (screen_height - dest_height) / 2.0;
+
+            
+
+            d.draw_texture_ex(
+                &texture,
+                Vector2::new(dest_x, dest_y),
+                0.0,
+                scale,
+                Color::WHITE,
+            );
+
+            d.draw_texture(
+                scarfy,
+                0,
+                0,
+                Color::WHITE
+            );
+        }
+    }
+
 }
 

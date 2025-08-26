@@ -1,0 +1,9 @@
++--+--+--+--+
+|  ccccccccc|
++ c+--+ c+ c+
+| c| cccc| c|
++ c+ c+--+--+
+| c| ccccccc|
++ c+--+--+ c+
+| ccccccc| c|
++--+--+--+--+

@@ -32,12 +32,12 @@ pub fn cast_ray(
     let i = x / block_size;
     let j = y / block_size;
 
-    if maze[j][i] != ' ' {
+    if maze[j][i] != ' ' && maze[j][i] != 'c'  {
       return Intersect{
         distance: d,
         impact: maze[j][i],
-        impact_x: (x % block_size) as f32,
-        impact_y: (y % block_size) as f32
+        impact_x: x as f32,
+        impact_y: y as f32
       };
     }
 
@@ -48,5 +48,7 @@ pub fn cast_ray(
     d += 10.0;
   }
 }
+
+
 
 
