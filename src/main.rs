@@ -1,8 +1,5 @@
 //TODO
-// win screen
-// start screen
-
-//// Enemies with gifs
+// Enemies with gifs
 // Enemies movement
 // Enemy AI
 // Enemy in minimap
@@ -125,17 +122,17 @@ fn render_world(
 ) {
   let num_rays = framebuffer.image_width;
 
-  // let hw = framebuffer.width as f32 / 2.0;   // precalculated half width
-  let hh = framebuffer.image_height as f32 / 2.0;  // precalculated half height
+  // let hw = framebuffer.width as f32 / 2.0;   
+  let hh = framebuffer.image_height as f32 / 2.0;  
 
 
   for i in 0..num_rays {
-    let current_ray = i as f32 / num_rays as f32; // current ray divided by total rays
+    let current_ray = i as f32 / num_rays as f32; 
     let a = player.a - (player.fov / 2.0) + (player.fov * current_ray);
     let intersect = cast_ray(framebuffer, &maze, &player, a, block_size, false);
 
-    // Calculate the height of the stake
-    let distance_to_wall = intersect.distance;// how far is this wall from the player
+    
+    let distance_to_wall = intersect.distance;
     z_buffer[i as usize] = distance_to_wall;
     let distance_to_projection_plane = 100.0;
         let stake_height = (hh / distance_to_wall) * distance_to_projection_plane;
@@ -177,7 +174,7 @@ fn render_sprites(
     block_size: usize,
     z_buffer: &Vec<f32>,
 ){
-    // Recorro el mapa y dibujo monedas/enemigos
+    
     for row in 0..maze.len() {
         for col in 0..maze[row].len() {
             match maze[row][col] {
@@ -203,31 +200,28 @@ fn draw_sprite(
     texture_manager: &TextureManager,
     z_buffer: &Vec<f32>
 ) {
-    // Distancia del jugador al sprite
+    
     let dx = sprite.pos.x - player.pos.x;
     let dy = sprite.pos.y - player.pos.y;
     let distance = (dx*dx + dy*dy).sqrt();
 
-    // Ángulo hacia el sprite
+    
     let angle_to_sprite = dy.atan2(dx);
     let mut angle_diff = angle_to_sprite - player.a;
     while angle_diff > PI { angle_diff -= 2.0 * PI; }
     while angle_diff < -PI { angle_diff += 2.0 * PI; }
 
-    // Si está fuera del FOV, no dibujar
+    
     if angle_diff.abs() > player.fov / 2.0 {
         return;
     }
 
-    // Tamaño en pantalla (inverso a la distancia)
-    let scale = 5.0; // try 2.0 for double size
+    let scale = 5.0; 
     let sprite_size = ((framebuffer.image_height as f32 / distance) * scale) as usize;
 
-    // Centro horizontal en pantalla
     let middle_screen = framebuffer.image_width as f32 / 2.0;
     let screen_x = middle_screen + angle_diff * framebuffer.image_width as f32 / player.fov;
 
-    // Coordenadas de dibujo
     let start_x = (screen_x as isize - (sprite_size as isize) / 2).max(0) as usize;
     let half_screen = framebuffer.image_height as usize / 2;
     let half_sprite = sprite_size / 2;
@@ -274,7 +268,7 @@ fn main() {
         framebuffer_width,
         framebuffer_height,
         framebuffer_color,
-        1 // Assuming a pixel size of 4 for RGBA
+        1 
     );
 
     let texture_manager = texture::TextureManager::new(
@@ -351,8 +345,6 @@ fn main() {
 
         process_events(&mut player, &mut window, &mut maze, block_size);
 
-
-        //paint floor
         for x in 0..framebuffer.image_width {
             for y in ((framebuffer.image_height)/2)..framebuffer.image_height {
                 framebuffer.set_pixel(x, y, Color::from_hex("5c9599").unwrap());

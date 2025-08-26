@@ -9,7 +9,7 @@ use crate::maze::Maze;
 pub struct Player {
     pub pos: Vector2,
     pub a: f32,
-    pub fov: f32, // field of view
+    pub fov: f32, 
 }
 
 pub fn process_events(player: &mut Player, rl: &mut RaylibHandle, maze: &mut Maze, block_size: usize) {
@@ -25,7 +25,7 @@ pub fn process_events(player: &mut Player, rl: &mut RaylibHandle, maze: &mut Maz
             return true;
         } else if maze[row][col] == 'c' {
             maze[row][col] = ' ';
-            return true; // or false, depending on your logic for 'c'
+            return true; 
         } else {
             return false;
         }
@@ -88,7 +88,7 @@ pub fn process_events(player: &mut Player, rl: &mut RaylibHandle, maze: &mut Maz
         
     
         let move_x = if left_x.abs() > deadzone { left_x } else { 0.0 };
-        let move_y = if left_y.abs() > deadzone { -left_y } else { 0.0 }; // invert Y if needed
+        let move_y = if left_y.abs() > deadzone { -left_y } else { 0.0 }; 
 
         let new_x = player.pos.x + MOVE_SPEED * move_y * player.a.cos() - MOVE_SPEED * move_x * player.a.sin();
         let new_y = player.pos.y + MOVE_SPEED * move_y * player.a.sin() + MOVE_SPEED * move_x * player.a.cos();

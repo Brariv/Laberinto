@@ -3,8 +3,8 @@ use std::collections::HashMap;
 use std::slice;
 
 pub struct TextureManager {
-    images: HashMap<char, Image>,       // Store images for pixel access
-    textures: HashMap<char, Texture2D>, // Store GPU textures for rendering
+    images: HashMap<char, Image>,
+    textures: HashMap<char, Texture2D>,
 }
 
 impl TextureManager {
@@ -12,7 +12,6 @@ impl TextureManager {
         let mut images = HashMap::new();
         let mut textures = HashMap::new();
 
-        // Map characters to texture file paths
         let texture_files = vec![
             ('+', "assets/wall.png"),
             ('-', "assets/wall.png"),

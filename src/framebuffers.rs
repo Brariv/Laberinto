@@ -7,7 +7,6 @@ pub struct FrameBuffer{
     pub image_width: i32, 
     pub image_height: i32,
     pixel_size: i32, // Size of each pixel in the framebuffer
-    //pub buffer: Vec<u32>,
     _color: Color
 }
 
@@ -20,7 +19,6 @@ impl FrameBuffer {
             image_width,
             image_height,
             pixel_size,
-            //buffer: vec![0; (image_width * image_height) as usize],
             _color: color
         }
     }
@@ -57,20 +55,7 @@ impl FrameBuffer {
 
     pub fn clear(&mut self) {
         self.color_buffer = Image::gen_image_color(self.image_width, self.image_height, self._color);
-        //for pixel in self.buf
     }
-
-    // pub fn swap_buffers(
-    //     &mut self, 
-    //     window: &mut RaylibHandle, 
-    //     raylib_thread: &RaylibThread
-    // ) {
-    //     if let Ok(texture) = window.load_texture_from_image(raylib_thread, &self.color_buffer) {
-    //         let mut renderer = window.begin_drawing(raylib_thread);
-    //         renderer.draw_texture(&texture, 0, 0, Color::WHITE);
-
-    //     }
-    // }
 
     pub fn swap_buffers(
         &mut self,
@@ -88,7 +73,7 @@ impl FrameBuffer {
 
             let scale_x = screen_width / texture_width;
             let scale_y = screen_height / texture_height;
-            let scale = scale_x.min(scale_y); // mantener aspecto cuadrado
+            let scale = scale_x.min(scale_y); 
 
             let dest_width = texture_width * scale;
             let dest_height = texture_height * scale;

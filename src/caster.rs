@@ -1,5 +1,3 @@
-// caster.rs
-
 use raylib::color::Color;
 
 use crate::framebuffers::FrameBuffer;
