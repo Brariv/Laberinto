@@ -84,7 +84,6 @@ pub fn process_events(player: &mut Player, rl: &mut RaylibHandle, maze: &mut Maz
         let left_x = rl.get_gamepad_axis_movement(gamepad_index, GamepadAxis::GAMEPAD_AXIS_LEFT_X);
         let left_y = rl.get_gamepad_axis_movement(gamepad_index, GamepadAxis::GAMEPAD_AXIS_LEFT_Y);
         let right_x = rl.get_gamepad_axis_movement(gamepad_index, GamepadAxis::GAMEPAD_AXIS_RIGHT_X);
-        println!("Left stick: ({:.2}, {:.2}) Right stick X: {:.2}", left_x, left_y, right_x);
         
     
         let move_x = if left_x.abs() > deadzone { left_x } else { 0.0 };
@@ -97,8 +96,8 @@ pub fn process_events(player: &mut Player, rl: &mut RaylibHandle, maze: &mut Maz
             player.pos.y = new_y;
         }
 
-        player.a += -right_x * ROTATION_SPEED;
-    }
+        let rotate_x = if right_x.abs() > deadzone { right_x } else { 0.0 };
+        player.a += -rotate_x * ROTATION_SPEED;  }
     if rl.is_gamepad_available(gamepad_index) {
         println!(
             "Gamepad {} detected: {}",

@@ -153,7 +153,7 @@ fn render_world(
 
         for y in ys..=ye {
             let v = (y as f32 - ys as f32) / ((ye - ys).max(1) as f32);
-            let tex_y = (v * th_u as f32).clamp(0.0, th_u as f32 - 1.0) as u32;
+            let tex_y = (v * th_u as f32) as u32;
 
             let color = texture_manager.get_pixel_color(
                 intersect.impact,
